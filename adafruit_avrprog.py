@@ -480,7 +480,8 @@ def read_hex_page(file_state, page_addr, page_size, page_buffer):
         line_idx = 0
         while (page_idx < page_size) and (line_idx < hex_len):
             # print("page_idx = %d, line_idx = %d" % (page_idx, line_idx))
-            page_buffer[page_idx] = byte_buffer[line_idx]
+            if page_idx >= 0:
+                page_buffer[page_idx] = byte_buffer[line_idx]
             line_idx += 1
             page_idx += 1
         if page_idx == page_size:
