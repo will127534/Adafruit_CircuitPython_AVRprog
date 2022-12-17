@@ -484,6 +484,8 @@ def read_hex_page(file_state, page_addr, page_size, page_buffer):
             line_idx += 1
             page_idx += 1
         if page_idx == page_size:
+            file_state["f"].seek(orig_loc)  # back up!
+            file_state["line"] -= 1
             return True  # ok we've read a full page, can bail now!
 
     return False  # we...shouldn't get here?
